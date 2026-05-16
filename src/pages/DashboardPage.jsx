@@ -13,7 +13,7 @@ import { formatIsoDate, getIsoMonth, getMonthName } from '../utils/date';
 
 const StatCard = ({ icon: Icon, label, value, tone }) => {
   return (
-    <article className={`rounded-2xl border p-4 ${tone}`}>
+    <article className={`rounded-2xl border p-4 theme-transition ${tone}`}>
       <div className="flex items-center justify-between">
         <p className="text-sm font-medium text-muted">{label}</p>
         <Icon className="h-5 w-5" />
@@ -99,9 +99,24 @@ const DashboardPage = () => {
         <p className="mt-2 text-sm text-muted">Selected date: {formatIsoDate(selectedDate)}</p>
 
         <div className="mt-6 grid gap-3 sm:grid-cols-3">
-          <StatCard icon={CheckCircle2} label="Completed" value={stats.completedCount} tone="border-emerald-200 bg-emerald-50" />
-          <StatCard icon={CircleDashed} label="Pending" value={stats.pendingCount} tone="border-amber-200 bg-amber-50" />
-          <StatCard icon={CalendarClock} label="Completion" value={`${stats.completionRate}%`} tone="border-cyan-200 bg-cyan-50" />
+          <StatCard
+            icon={CheckCircle2}
+            label="Completed"
+            value={stats.completedCount}
+            tone="border-[var(--stat-completed-border)] bg-[var(--stat-completed-bg)] text-[var(--stat-completed-text)]"
+          />
+          <StatCard
+            icon={CircleDashed}
+            label="Pending"
+            value={stats.pendingCount}
+            tone="border-[var(--stat-pending-border)] bg-[var(--stat-pending-bg)] text-[var(--stat-pending-text)]"
+          />
+          <StatCard
+            icon={CalendarClock}
+            label="Completion"
+            value={`${stats.completionRate}%`}
+            tone="border-[var(--stat-completion-border)] bg-[var(--stat-completion-bg)] text-[var(--stat-completion-text)]"
+          />
         </div>
       </section>
 
