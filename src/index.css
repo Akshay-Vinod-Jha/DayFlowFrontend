@@ -1,0 +1,204 @@
+@import 'tailwindcss';
+
+/* Light mode - DEFAULT */
+:root {
+  font-family: 'Manrope', sans-serif;
+  
+  /* Colors */
+  --bg: #ffffff;
+  --text: #0f172a;
+  --text-secondary: #1e293b;
+  --muted: #64748b;
+  --panel-bg: rgba(255,255,255,0.8);
+  --panel-border: rgba(15,23,42,0.08);
+  --border: #e2e8f0;
+  
+  /* Buttons */
+  --btn-bg: #0f172a;
+  --btn-text: #ffffff;
+  --btn-bg-hover: #1e293b;
+  --danger: #ef4444;
+  --danger-text: #ffffff;
+
+  color: var(--text);
+  background: var(--bg);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Dark mode - via .dark class or prefers-color-scheme */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0f172a;
+    --text: #f1f5f9;
+    --text-secondary: #cbd5e1;
+    --muted: #94a3b8;
+    --panel-bg: rgba(15,23,42,0.6);
+    --panel-border: rgba(226,232,240,0.08);
+    --border: #334155;
+    
+    --btn-bg: #06b6d4;
+    --btn-text: #0f172a;
+    --btn-bg-hover: #0891b2;
+    --danger: #fb7185;
+    --danger-text: #0f172a;
+    
+    /* Stat Cards - Dark Mode */
+    --stat-completed-border: #115e59;
+    --stat-completed-bg: rgba(17, 94, 89, 0.15);
+    --stat-completed-text: #5eead4;
+    
+    --stat-pending-border: #78350f;
+    --stat-pending-bg: rgba(120, 53, 15, 0.15);
+    --stat-pending-text: #fbbf24;
+    
+    --stat-completion-border: #155e75;
+    --stat-completion-bg: rgba(21, 94, 117, 0.15);
+    --stat-completion-text: #22d3ee;
+  }
+}
+
+:root.dark {
+  --bg: #0f172a;
+  --text: #f1f5f9;
+  --text-secondary: #cbd5e1;
+  --muted: #94a3b8;
+  --panel-bg: rgba(15,23,42,0.6);
+  --panel-border: rgba(226,232,240,0.08);
+  --border: #334155;
+  
+  --btn-bg: #06b6d4;
+  --btn-text: #0f172a;
+  --btn-bg-hover: #0891b2;
+  --danger: #fb7185;
+  --danger-text: #0f172a;
+  
+  /* Stat Cards - Dark Mode */
+  --stat-completed-border: #115e59;
+  --stat-completed-bg: rgba(17, 94, 89, 0.15);
+  --stat-completed-text: #5eead4;
+  
+  --stat-pending-border: #78350f;
+  --stat-pending-bg: rgba(120, 53, 15, 0.15);
+  --stat-pending-text: #fbbf24;
+  
+  --stat-completion-border: #155e75;
+  --stat-completion-bg: rgba(21, 94, 117, 0.15);
+  --stat-completion-text: #22d3ee;
+}
+
+:root.light {
+  --bg: #ffffff;
+  --text: #0f172a;
+  --text-secondary: #1e293b;
+  --muted: #64748b;
+  --panel-bg: rgba(255,255,255,0.8);
+  --panel-border: rgba(15,23,42,0.08);
+  --border: #e2e8f0;
+  
+  --btn-bg: #0f172a;
+  --btn-text: #ffffff;
+  --btn-bg-hover: #1e293b;
+  --danger: #ef4444;
+  --danger-text: #ffffff;
+  
+  /* Stat Cards - Light Mode */
+  --stat-completed-border: #a7f3d0;
+  --stat-completed-bg: #ecfdf5;
+  --stat-completed-text: #047857;
+  
+  --stat-pending-border: #fed7aa;
+  --stat-pending-bg: #fffbeb;
+  --stat-pending-text: #b45309;
+  
+  --stat-completion-border: #a5f3fc;
+  --stat-completion-bg: #ecf8ff;
+  --stat-completion-text: #0e7490;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+}
+
+/* Ensure form controls have readable text in both themes */
+input,
+textarea,
+select {
+  color: var(--text);
+  background: transparent;
+}
+
+/* Make panels adapt to theme when using translucency utility classes */
+.panel-adaptive {
+  background: var(--panel-bg);
+  border-color: var(--border);
+}
+
+/* Semantic adaptive utilities */
+.text-adaptive { color: var(--text); }
+.text-muted { color: var(--muted); }
+.bg-adaptive { background: var(--panel-bg); }
+.border-adaptive { border-color: var(--border); }
+
+/* Button styles */
+.btn-primary {
+  background: var(--btn-bg);
+  color: var(--btn-text);
+  border-radius: 0.75rem;
+  padding: 0.5rem 1rem;
+  border: 1px solid transparent;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+.btn-primary:hover { background: var(--btn-bg-hover); }
+
+.btn-danger {
+  background: var(--danger);
+  color: var(--danger-text);
+  border-radius: 0.75rem;
+  padding: 0.5rem 1rem;
+  border: 1px solid transparent;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+.btn-danger:hover { filter: brightness(0.95); }
+
+.btn-ghost {
+  background: transparent;
+  color: var(--text);
+  border: 1px solid var(--border);
+  padding: 0.4rem 0.6rem;
+  border-radius: 0.6rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+/* Input styles */
+.input-adaptive {
+  background: transparent;
+  color: var(--text);
+  border-color: var(--border) !important;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.75rem;
+}
+
+.input-adaptive::placeholder {
+  color: color-mix(in srgb, var(--muted) 60%, transparent);
+}
+
+/* Smooth theme transition */
+.theme-transition {
+  transition: background-color 220ms ease, color 220ms ease, border-color 220ms ease, box-shadow 220ms ease;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.12); border-radius: 999px; }
+:root.dark ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.08); }
+
